@@ -1,0 +1,11 @@
+-o que é react? biblioteca para construção de interface, SPA;
+-Tudo fica dentro do JS;
+-React/ReactJS/React Native;
+-Segue o conceito de componetização;
+-Divisão de responsabilidades: Back-end(regra de negócio) e Front-end(interface);
+-Uma API para múltiplos clientes;
+
+1- Criar pasta e executar o pacote npx create-react-app nome --template=typescript 
+
+
+
