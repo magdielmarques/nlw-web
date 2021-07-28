@@ -6,6 +6,7 @@
 -Uma API para múltiplos clientes;
 
 1- Criar pasta e executar o pacote npx create-react-app nome --template=typescript 
-
+2- limpar projeto
+3- 
 
 
