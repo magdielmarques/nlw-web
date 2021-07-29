@@ -11,7 +11,10 @@ obs.: DOM é a árvore de elementos do HTML
 obs.: JSX é a possíbilidade de escrever HTML dentro do JS
 obs.: o vídeo explica o que são propiedades
 obs.: Estado são informações matidas pelo próprio componente
-obs.: Conceito de imutabilidade 
-3- 
+obs.: Conceito de imutabilidade   
+useState retorna uma função com o valor do estado e uma função para atualizar o valor do estado
+const counter = useState(0);
+desestruturando fica const [counter, setCounter] = useState(0);    
+3- importar fontes e instalar pacote npm install react-icons
 
 
