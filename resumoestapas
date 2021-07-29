@@ -7,6 +7,11 @@
 
 1- Criar pasta e executar o pacote npx create-react-app nome --template=typescript 
 2- limpar projeto
+obs.: DOM é a árvore de elementos do HTML
+obs.: JSX é a possíbilidade de escrever HTML dentro do JS
+obs.: o vídeo explica o que são propiedades
+obs.: Estado são informações matidas pelo próprio componente
+obs.: Conceito de imutabilidade 
 3- 
 
 
