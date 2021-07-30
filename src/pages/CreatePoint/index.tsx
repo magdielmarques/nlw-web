@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi"
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
+import api from "../../services/api";
+
 
 import "./style.css";
 import logo from "../../assets/logo.svg"
 
-const CreatePoint = () => {
+const CreatePoint = () => { 
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        api.get('items').then(response => {
+            setItems(response.data);
+        })
+    }, []);
+
     return (
         <div id="page-create-point">
             <header>
@@ -97,30 +107,11 @@ const CreatePoint = () => {
                     </legend>
 
                     <ul className="items-grid">
-                        <li>
+                        {items.map(item => <p>Olá</p>}
+                        {/*<li>
                             <img src="http://localhost:3333/uploads/oleo.svg" alt="Oleo" />
                             <span>Óleo de Cozinha</span>
-                        </li>
-                        <li>
-                            <img src="http://localhost:3333/uploads/oleo.svg" alt="Oleo" />
-                            <span>Óleo de Cozinha</span>
-                        </li>
-                        <li>
-                            <img src="http://localhost:3333/uploads/oleo.svg" alt="Oleo" />
-                            <span>Óleo de Cozinha</span>
-                        </li>
-                        <li>
-                            <img src="http://localhost:3333/uploads/oleo.svg" alt="Oleo" />
-                            <span>Óleo de Cozinha</span>
-                        </li>
-                        <li>
-                            <img src="http://localhost:3333/uploads/oleo.svg" alt="Oleo" />
-                            <span>Óleo de Cozinha</span>
-                        </li>
-                        <li>
-                            <img src="http://localhost:3333/uploads/oleo.svg" alt="Oleo" />
-                            <span>Óleo de Cozinha</span>
-                        </li>
+                        </li>*/}
                     </ul>
                 </fieldset>
 
