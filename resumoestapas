@@ -16,5 +16,5 @@ useState retorna uma função com o valor do estado e uma função para atualiza
 const counter = useState(0);
 desestruturando fica const [counter, setCounter] = useState(0);    
 3- importar fontes e instalar pacote npm install react-icons
-
+4- começar a configurar as rotas através de npm install react-router-dom
 
