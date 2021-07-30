@@ -17,4 +17,6 @@ const counter = useState(0);
 desestruturando fica const [counter, setCounter] = useState(0);    
 3- importar fontes e instalar pacote npm install react-icons
 4- começar a configurar as rotas através de npm install react-router-dom
+5- criar página create point e home
+6- integrar com mapa, instalar liflet com npm install react-leflet 
 
