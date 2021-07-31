@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi"
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
+import axios from "axios";
 import api from "../../services/api";
 
 
@@ -14,14 +15,36 @@ interface Item {
     image_url:string;
 }
 
+interface IBGEUFResponse {
+    sigla: string;
+}
+
 const CreatePoint = () => { 
     const [items, setItems] = useState<Item[]>([]);
+    const [ufs, setUfs] = useState<string[]>([]);
+    const [selectedUf, setSelectedUf] = useState('0');
 
     useEffect(() => {
         api.get('items').then(response => {
             setItems(response.data);
         })
     }, []);
+
+    useEffect(() => {
+        axios.get<IBGEUFResponse[]>("https://servicodados.ibge.gov.br/api/v1/localidades/estados").then(response => {
+            const ufInitials = response.data.map(uf => uf.sigla);
+            //console.log(ufInitials);
+            setUfs(ufInitials) ;
+        })
+    }, []);
+
+    useEffect(() => {
+        
+    }, [])
+    function handleSelectUf() {
+        console.log('teste');
+    }
+
 
     return (
         <div id="page-create-point">
@@ -93,8 +116,11 @@ const CreatePoint = () => {
                     <div className="field-group">
                         <div className="field">
                             <label htmlFor="uf">Estado(UF)</label>
-                            <select name="uf" id="uf">
+                            <select name="uf" id="uf" onChange={handleSelectUf}>
                                 <option value="0">Slecione uma UF</option>
+                                {ufs.map(uf =>(
+                                    <option key={uf} value={uf}>{uf}</option>
+                                ))}
                             </select>
                         </div>
                         <div className="field">
