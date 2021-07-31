@@ -8,8 +8,14 @@ import api from "../../services/api";
 import "./style.css";
 import logo from "../../assets/logo.svg"
 
+interface Item {
+    id:number;
+    title:string;
+    image_url:string;
+}
+
 const CreatePoint = () => { 
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState<Item[]>([]);
 
     useEffect(() => {
         api.get('items').then(response => {
@@ -107,11 +113,14 @@ const CreatePoint = () => {
                     </legend>
 
                     <ul className="items-grid">
-                        {items.map(item => <p>Olá</p>}
-                        {/*<li>
-                            <img src="http://localhost:3333/uploads/oleo.svg" alt="Oleo" />
-                            <span>Óleo de Cozinha</span>
-                        </li>*/}
+                        {items.map(item => {
+                            return (
+                                <li key={item.id}>
+                                    <img src={item.image_url} alt={item.title} />
+                                    <span>{item.title}</span>
+                                </li>
+                            );
+                        })}
                     </ul>
                 </fieldset>
 
