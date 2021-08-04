@@ -1,10 +1,9 @@
 import React, { useEffect, useState, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi"
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import axios from "axios";
 import api from "../../services/api";
-
+import MapLeaft from "./map";
 
 import "./style.css";
 import logo from "../../assets/logo.svg"
@@ -68,8 +67,10 @@ const CreatePoint = () => {
     return (
         <div id="page-create-point">
             <header>
-                <img src={logo} alt="Ecoleta" />
-
+                <Link to="/">
+                        <img src={logo} alt="Ecoleta" />                    
+                </Link>
+                
                 <Link to="/">
                     <FiArrowLeft />
                     Voltar para home
@@ -119,18 +120,8 @@ const CreatePoint = () => {
                         <h2>Endereço</h2>
                         <span>Selecione o endereço no mapa</span>
                     </legend>
-
-                    <MapContainer center={[-20.4864927, -54.7696995]} zoom={13} scrollWheelZoom={false}>
-                        <TileLayer
-                            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        />
-                        <Marker position={[-20.4864927, -54.7696995]}>
-                            <Popup>
-                            A pretty CSS3 popup. <br /> Easily customizable.
-                            </Popup>
-                        </Marker>
-                    </MapContainer>
+                    
+                    <MapLeaft />
 
                     <div className="field-group">
                         <div className="field">
