@@ -67,8 +67,10 @@ const CreatePoint = () => {
     return (
         <div id="page-create-point">
             <header>
-                <img src={logo} alt="Ecoleta" />
-
+                <Link to="/">
+                        <img src={logo} alt="Ecoleta" />                    
+                </Link>
+                
                 <Link to="/">
                     <FiArrowLeft />
                     Voltar para home
@@ -118,7 +120,9 @@ const CreatePoint = () => {
                         <h2>Endereço</h2>
                         <span>Selecione o endereço no mapa</span>
                     </legend>
+                    
                     <MapLeaft />
+
                     <div className="field-group">
                         <div className="field">
                             <label htmlFor="uf">Estado(UF)</label>

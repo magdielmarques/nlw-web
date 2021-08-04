@@ -1,28 +1,37 @@
 import React, {useState} from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet"
+import { LeafletMouseEvent } from "leaflet";
+import { useEffect } from "react";
 
 function LocationMarker() {
     const [position, setPosition] = useState<[number, number]>([0,0]);
+    const [selectedPosition, setSelectedPosition] = useState<[number, number]>([0,0]);
 
     const map = useMapEvents({
-        click: () => {
-            map.locate()
+        click: (event: LeafletMouseEvent) => {
+            if(selectedPosition[0] === 0 ){
+                map.locate();
+            }     
+            if(position[0] !== 0)   
+                setSelectedPosition([event.latlng.lat, event.latlng.lng]);
         },
         locationfound(e) {
-            setPosition([e.latlng.lat, e.latlng.lng]);
-            map.flyTo(e.latlng, map.getZoom())
+            if(position[0] === 0){
+                setPosition([e.latlng.lat, e.latlng.lng]);
+                map.flyTo(e.latlng, map.getZoom());
+            }
         },
     })
-
-    console.log(position)
+    
     return (
-        <Marker position={position}>
-            <Popup>You are here</Popup>
+        <Marker position={selectedPosition}>
+            <Popup>Agora você está aqui </Popup>
         </Marker>
     )
 }
 
 const MapLeaft = () => { 
+
     return (
         <MapContainer 
             center={[51.505, -0.09]} 
