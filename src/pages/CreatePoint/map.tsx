@@ -34,7 +34,7 @@ const MapLeaft = () => {
         <MapContainer 
             center={[51.505, -0.09]} 
             zoom={13} 
-            scrollWheelZoom={true}
+            scrollWheelZoom={false}
         >
             <TileLayer
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
