@@ -3,7 +3,8 @@ import { Link, useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi"
 import axios from "axios";
 import api from "../../services/api";
-import MapLeaft from "./map";
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet"
+import { LeafletMouseEvent } from "leaflet";
 
 import "./style.css";
 import logo from "../../assets/logo.svg"
@@ -62,7 +63,7 @@ const CreatePoint = () => {
                 const cityNames = response.data.map(city => city.nome);
                 setCities(cityNames) ;
         })
-    }, [selectedUf])
+    }, [selectedUf]);
 
     function handleSelectUf(event: ChangeEvent<HTMLSelectElement>) {
         setSelectedUf(event.target.value);
@@ -95,7 +96,8 @@ const CreatePoint = () => {
         const { name, email, whatsapp } = formData;
         const uf = selectedUf;
         const city = selectedCity;
-        //const [ latitude, longitude ] = MapLeaft.;
+        //lat
+        //lng
         const items = selectedItems;
 
         const data = {
@@ -103,8 +105,8 @@ const CreatePoint = () => {
             email, 
             whatsapp, 
             uf, 
-            latitude:-555, 
-            longitude:-555,
+            latitude:123, 
+            longitude:123,
             city,
             items,
         }
@@ -114,6 +116,38 @@ const CreatePoint = () => {
         alert('Ponto de coleta criado!')
 
         history.push('/')
+    }
+
+    function LocationMarker() {
+        const [position, setPosition] = useState<[number, number]>([0,0]);
+        const [selectedPosition, setSelectedPosition] = useState<[number, number]>([0,0]);
+    
+        const map = useMapEvents({
+            click: (event: LeafletMouseEvent) => {
+                if(selectedPosition[0] === 0 ){
+                    setSelectedPosition([event.latlng.lat, event.latlng.lng]);
+                    console.log('teste',selectedPosition)
+
+                    map.locate();
+                }     
+                if(position[0] !== 0){
+                    setSelectedPosition([event.latlng.lat, event.latlng.lng]);
+                    console.log(selectedPosition)
+                }
+            },
+            locationfound(e) {
+                if(position[0] === 0){
+                    setPosition([e.latlng.lat, e.latlng.lng]);
+                    map.flyTo(e.latlng, map.getZoom());
+                }
+            },
+        })
+        
+        return (
+            <Marker position={selectedPosition}>
+                <Popup>Agora você está aqui </Popup>
+            </Marker>
+        )
     }
 
     return (
@@ -175,8 +209,18 @@ const CreatePoint = () => {
                         <h2>Endereço</h2>
                         <span>Selecione o endereço no mapa</span>
                     </legend>
-                    
-                    <MapLeaft />
+
+                    <MapContainer 
+                        center={[51.505, -0.09]} 
+                        zoom={13} 
+                        scrollWheelZoom={false}
+                    >
+                        <TileLayer
+                            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        />
+                        <LocationMarker />
+                    </MapContainer>
 
                     <div className="field-group">
                         <div className="field">
