@@ -3,11 +3,10 @@ import { Link, useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi"
 import axios from "axios";
 import api from "../../services/api";
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet"
-import { LeafletMouseEvent } from "leaflet";
-
 import "./style.css";
-import logo from "../../assets/logo.svg"
+import logo from "../../assets/logo.svg";
+import Dropzone from '../../components/Dropzone/index';
+import MapLeaflet from "../../components/MapLeaflet/index";
 
 interface Item {
     id:number;
@@ -28,6 +27,8 @@ const CreatePoint = () => {
     const [ufs, setUfs] = useState<string[]>([]);
     const [cities, setCities] = useState<string[]>([]);
 
+    const [selectedPosition, setSelectedPosition] = useState<[number, number]>([0,0]);
+    const [selectedFile, setSelectedFile] = useState<File>();
     const [selectedUf, setSelectedUf] = useState('0');
     const [selectedCity, setSelectedCity] = useState('0');
     const [selectedItems, setSelectedItems] = useState<number[]>([]);
@@ -71,6 +72,7 @@ const CreatePoint = () => {
 
     function handleSelectCity(event: ChangeEvent<HTMLSelectElement>) {
         setSelectedCity(event.target.value);
+        console.log('selectedPosition index',selectedPosition)
     }
 
     function handleInputChange(event:ChangeEvent<HTMLInputElement> ){
@@ -91,62 +93,34 @@ const CreatePoint = () => {
     }
 
     async function handleSubmit (event: FormEvent){
-        event.preventDefault();
-
+        event.preventDefault(); 
+        /*
         const { name, email, whatsapp } = formData;
         const uf = selectedUf;
         const city = selectedCity;
-
+        
         const items = selectedItems;
 
-        const data = {
-            name, 
-            email, 
-            whatsapp, 
-            uf, 
-            latitude:123, 
-            longitude:123,
-            city,
-            items,
+        const data = new FormData();
+        
+        data.append('name', name );
+        data.append('email', email);
+        data.append('whatsapp', whatsapp);
+        data.append('uf', uf);
+        data.append('latitude', String(latitude));
+        data.append('longitude',String(longitude));
+        data.append('city',city);
+        data.append('items',items.join(','));
+        
+        if(selectedFile){
+            data.append('image', selectedFile)
         }
 
         await api.post('points', data);
-
+*/
         alert('Ponto de coleta criado!')
 
         history.push('/')
-    }
-
-    function LocationMarker() {
-        const [position, setPosition] = useState<[number, number]>([0,0]);
-        const [selectedPosition, setSelectedPosition] = useState<[number, number]>([0,0]);
-    
-        const map = useMapEvents({
-            click: (event: LeafletMouseEvent) => {
-                if(selectedPosition[0] === 0 ){
-                    setSelectedPosition([event.latlng.lat, event.latlng.lng]);
-                    console.log('teste',selectedPosition)
-
-                    map.locate();
-                }     
-                if(position[0] !== 0){
-                    setSelectedPosition([event.latlng.lat, event.latlng.lng]);
-                    console.log(selectedPosition)
-                }
-            },
-            locationfound(e) {
-                if(position[0] === 0){
-                    setPosition([e.latlng.lat, e.latlng.lng]);
-                    map.flyTo(e.latlng, map.getZoom());
-                }
-            },
-        })
-        
-        return (
-            <Marker position={selectedPosition}>
-                <Popup>Agora você está aqui </Popup>
-            </Marker>
-        )
     }
 
     return (
@@ -165,6 +139,8 @@ const CreatePoint = () => {
             <form onSubmit={handleSubmit}>
                 <h1>Cadastro do <br /> ponto de coleta</h1>
                 
+                <Dropzone onFileUploaded={setSelectedFile} />
+
                 <fieldset>
                     <legend>
                         <h2>Dados</h2>
@@ -209,18 +185,8 @@ const CreatePoint = () => {
                         <span>Selecione o endereço no mapa</span>
                     </legend>
 
-                    <MapContainer 
-                        center={[51.505, -0.09]} 
-                        zoom={13} 
-                        scrollWheelZoom={false}
-                    >
-                        <TileLayer
-                            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        />
-                        <LocationMarker />
-                    </MapContainer>
-
+                    <MapLeaflet onClick={setSelectedPosition}/>
+                    
                     <div className="field-group">
                         <div className="field">
                             <label htmlFor="uf">Estado(UF)</label>
