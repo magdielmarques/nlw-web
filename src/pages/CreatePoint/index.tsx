@@ -98,7 +98,7 @@ const CreatePoint = () => {
         const { name, email, whatsapp } = formData;
         const uf = selectedUf;
         const city = selectedCity;
-        
+
         const items = selectedItems;
 
         const data = new FormData();
