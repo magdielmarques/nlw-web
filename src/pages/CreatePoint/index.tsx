@@ -94,11 +94,11 @@ const CreatePoint = () => {
 
     async function handleSubmit (event: FormEvent){
         event.preventDefault(); 
-        /*
+        
         const { name, email, whatsapp } = formData;
         const uf = selectedUf;
         const city = selectedCity;
-        
+        const [ latitude, longitude ] = selectedPosition;
         const items = selectedItems;
 
         const data = new FormData();
@@ -112,12 +112,12 @@ const CreatePoint = () => {
         data.append('city',city);
         data.append('items',items.join(','));
         
-        if(selectedFile){
+        if(selectedFile) {
             data.append('image', selectedFile)
         }
-
+        
         await api.post('points', data);
-*/
+
         alert('Ponto de coleta criado!')
 
         history.push('/')
