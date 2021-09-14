@@ -94,7 +94,7 @@ const CreatePoint = () => {
 
     async function handleSubmit (event: FormEvent){
         event.preventDefault(); 
-        
+
         const { name, email, whatsapp } = formData;
         const uf = selectedUf;
         const city = selectedCity;
@@ -113,7 +113,7 @@ const CreatePoint = () => {
         data.append('city',city);
         data.append('items',items.join(','));
         
-        if(selectedFile) {
+        if(selectedFile){
             data.append('image', selectedFile)
         }
         
