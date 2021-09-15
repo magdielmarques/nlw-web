@@ -27,6 +27,6 @@
 </ul>
 
 <h1>Diário de bordo</h1>
-<p>Este projeto foi desenvolvido para aperfeiçoamento de algumas habilidades técnicas.
-Por conta da diferença de versões, existente entre as dependências do projeto feito no evento e o meu, tive que fazer diversas alterações para que o projeto funcionasse corretamente.
+<p>Este projeto foi feito com intuito de aperfeiçoamento de habilidades técnicas.
+Por conta das diferenças de versões, existente entre as dependências do projeto feito no evento e o meu, tive que fazer diversas alterações no código para que o projeto funcionasse corretamente.
 Ainda há algumas correções para serem feitas no projeto.</p>
