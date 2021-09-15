@@ -25,3 +25,8 @@
    <li><h4>Adicionar itens cadastrados na API e finalizar cadastro</h4></li>
    <img src="https://user-images.githubusercontent.com/40240561/133493022-a50392ad-b8ca-46a9-8c0a-047b9f2a930c.png">
 </ul>
+
+##Diário de bordo
+<p>Este projeto foi desenvolvido para aperfeiçoamento de algumas habilidades técnicas.
+Por conta da diferença de versões, existente entre as dependências do projeto feito no evento e o meu, tive que fazer diversas alterações para que o projeto funcionasse corretamente.
+Ainda há algumas correções para serem feitas no projeto.</p>
