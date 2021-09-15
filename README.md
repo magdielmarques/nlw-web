@@ -1,6 +1,6 @@
 # nlw-web 
 <h1>Projeto E-coleta do next level week - edição 1.</h1>
-<p>Para acessar este projeto, por favor, acesse: <a target="__blanck" href="https://e-coleta-magdiel.netlify.app/">projeto web</a></p>  
+<p>Para acessar este projeto, por favor, acesse: <a target="_blank" href="https://e-coleta-magdiel.netlify.app/">projeto web</a></p>  
 <hr>
 
 <h3>O que é o projeto?</h3>
@@ -29,4 +29,4 @@
 <h1>Diário de bordo</h1>
 <p>Este projeto foi feito com intuito de aperfeiçoamento de habilidades técnicas.
 Por conta das diferenças de versões, existente entre as dependências do projeto feito no evento e o meu, tive que fazer diversas alterações no código para que o projeto funcionasse corretamente.
-Ainda há algumas correções para serem feitas no projeto.</p>
+Ainda falta adicionar algumas features ao projeto.</p>
