@@ -27,4 +27,4 @@
 </ul>
 
 <h1>Diário de bordo</h1>
-<p>Projeto em React JS, feito na Next Level Week, evendo da Rocket Seat.Por conta das diferenças de versões existente entre as dependências do projeto feito no evento e o meu, tive que fazer diversas alterações no código para que o projeto funcionasse corretamente.</p>
+<p>Projeto em React, feito na Next Level Week, evento da Rocket Seat.Por conta das diferenças de versões existente entre as dependências do projeto feito no evento e o meu, tive que fazer diversas alterações no código para que o projeto funcionasse corretamente.</p>
