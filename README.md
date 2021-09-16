@@ -27,6 +27,4 @@
 </ul>
 
 <h1>Diário de bordo</h1>
-<p>Este projeto foi feito com intuito de aperfeiçoamento de habilidades técnicas.
-Por conta das diferenças de versões, existente entre as dependências do projeto feito no evento e o meu, tive que fazer diversas alterações no código para que o projeto funcionasse corretamente.
-Ainda falta adicionar algumas features ao projeto.</p>
+<p>Projeto em React JS, feito na Next Level Week, evendo da Rocket Seat.Por conta das diferenças de versões existente entre as dependências do projeto feito no evento e o meu, tive que fazer diversas alterações no código para que o projeto funcionasse corretamente.</p>
